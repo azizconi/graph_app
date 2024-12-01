@@ -1,4 +1,4 @@
-package com.example.graph_app.presentation
+package com.example.graph_app.presentation.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,7 +17,7 @@ class MainViewModel @Inject constructor(
 ): ViewModel() {
 
     private val _points = MutableStateFlow<Resource<List<PointInteractor>>>(Resource.Idle)
-    val points = _points.asStateFlow()
+    val pointsResult = _points.asStateFlow()
 
 
     fun getPoints(count: Int) {
@@ -28,5 +28,8 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun resetPointsResult() {
+        _points.value = Resource.Idle
+    }
 
 }

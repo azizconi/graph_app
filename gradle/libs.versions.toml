@@ -7,9 +7,10 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.6.1"
 lifecycleViewmodelKtx = "2.8.7"
-material = "1.10.0"
+material = "1.12.0"
 activity = "1.9.3"
 constraintlayout = "2.2.0"
+navigationFragmentKtx = "2.8.4"
 retrofit = "2.9.0"
 hilt = "2.48"
 ksp = "1.9.0-1.0.12"
@@ -17,6 +18,9 @@ ksp = "1.9.0-1.0.12"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationFragmentKtx" }
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationFragmentKtx" }
 hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -37,6 +41,8 @@ hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", v
 [plugins]
 google-kps = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 android-hilt = { id = "dagger.hilt.android.plugin" }
+kotlin-parcelize = { id = "kotlin-parcelize" }
+navigation-safeargs = { id = "androidx.navigation.safeargs" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }

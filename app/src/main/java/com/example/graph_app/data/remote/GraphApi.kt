@@ -8,7 +8,7 @@ import retrofit2.http.Query
 interface GraphApi {
 
 
-    @GET("/test/points")
+    @GET("test/points")
     suspend fun getPoints(@Query("count") count: Int): Response<PointsResponseModel>
 
 

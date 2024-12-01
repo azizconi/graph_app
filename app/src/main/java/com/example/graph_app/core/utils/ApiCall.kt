@@ -1,5 +1,6 @@
 package com.example.graph_app.core.utils
 
+import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -20,15 +21,16 @@ fun <T> safeApiCall(apiCall: suspend () -> Response<T>): Flow<Resource<T>> = flo
             emit(Resource.Error("Пустое тело ответа"))
         }
     } else {
-        val errorMsg = response.errorBody()?.string() ?: "Ошибка ${response.code()}: ${response.message()}"
-        emit(Resource.Error(errorMsg))
+        val errorMsg = response.errorBody()?.string()
+        emit(Resource.Error(errorMsg ?: "Ошибка"))
     }
 }.onStart {
     emit(Resource.Loading)
 }.catch { e ->
+    Log.e("safeApiCall", "error = ${e.message}, localizedMessage = ${e.localizedMessage}", )
     val errorMessage = when (e) {
         is IOException -> "Проблемы с сетью"
-        else -> e.localizedMessage ?: "Неизвестная ошибка"
+        else -> "Неизвестная ошибка"
     }
     emit(Resource.Error(errorMessage, e))
 }.flowOn(Dispatchers.IO)

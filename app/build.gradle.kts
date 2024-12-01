@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.kps)
     alias(libs.plugins.android.hilt)
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.navigation.safeargs)
 }
 
 android {
@@ -28,6 +30,11 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -55,4 +62,8 @@ dependencies {
     ksp(libs.hilt.compiler)
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    // navigation
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 }
